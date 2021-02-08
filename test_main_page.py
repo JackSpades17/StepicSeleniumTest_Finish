@@ -1,12 +1,9 @@
 import pytest
-from selenium import webdriver
-import time
+from .pages.main_page import MainPage
 
-link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-
-def test_items_body(browser):
-    browser.get(link)
-    time.sleep(10)
-    browser.find_element_by_css_selector("button.btn.btn-lg.btn-primary.btn-add-to-basket")
-    time.sleep(5)
-    browser.quit()
+def test_guest_can_go_to_login_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/"
+    page = MainPage(browser, link)   
+    page.open()                      
+    page.go_to_login_page() 
+    
